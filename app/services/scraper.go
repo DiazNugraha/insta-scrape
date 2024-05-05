@@ -1,7 +1,6 @@
 package services
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/tebeka/selenium"
@@ -46,24 +45,5 @@ func (s *Scrape) InitService(service selenium.Service) {
 func (s *Scrape) Scraper() {
 
 	s.Initial()
-	selDriver := *s.Driver
-	serviceDriver := *s.Service
-
-	defer serviceDriver.Stop()
-
-	// visit the target page
-	err := selDriver.Get("https://scrapingclub.com/exercise/list_infinite_scroll/")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	// retrieve the page raw html as string
-	// and logging it
-	html, err := selDriver.PageSource()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println(html)
-
+	s.InstagramScrape("username", "hashtag")
 }
