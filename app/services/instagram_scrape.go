@@ -53,7 +53,14 @@ func (s *Scrape) InstagramScrape(account string, hashTag string) {
 		fmt.Println(err)
 	}
 	submit.Click()
-	time.Sleep(5 * time.Second)
+	time.Sleep(10 * time.Second)
+
+	button, err := driver.FindElement(selenium.ByXPATH, "//div[contains(.,'Not Now')]")
+	if err != nil {
+		fmt.Println(err)
+	}
+	button.Click()
+	time.Sleep(10 * time.Second)
 
 	fmt.Println("end")
 }
