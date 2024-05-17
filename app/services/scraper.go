@@ -1,6 +1,7 @@
 package services
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/tebeka/selenium"
@@ -45,5 +46,16 @@ func (s *Scrape) InitService(service selenium.Service) {
 func (s *Scrape) Scraper() {
 
 	s.Initial()
-	s.InstagramScrape("username", "hashtag")
+
+	// terminal input
+	var username string
+	var hashtag string
+
+	fmt.Scanln(&username)
+	fmt.Println("Enter username: ")
+
+	fmt.Scanln(&hashtag)
+	fmt.Println("Enter hashtag: ")
+
+	s.InstagramScrape(username, hashtag)
 }
